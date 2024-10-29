@@ -115,6 +115,7 @@ class OnboardingTask(Job):  # pylint: disable=too-many-instance-attributes
             if self.platform and self.platform.napalm_args
             else settings.NAPALM_ARGS,
         )
+        print("batman: getting inside get_onboarding_facts")
         netdev.get_onboarding_facts()
         netdev_dict = netdev.get_netdev_dict()
 

@@ -138,6 +138,8 @@ class NetdevKeeper:  # pylint: disable=too-many-instance-attributes
             **netmiko_optional_args,
         }
 
+        logger.info("BATMAN - remote_device: %s", remote_device)
+
         if self.secret:
             remote_device["secret"] = self.secret
 
@@ -182,6 +184,9 @@ class NetdevKeeper:  # pylint: disable=too-many-instance-attributes
             platform_to_napalm_nautobot = {
                 platform: platform.napalm_driver for platform in Platform.objects.all() if platform.napalm_driver
             }
+
+            logger.info(f"BATMAN: platform_to_napalm_nautobot: {platform_to_napalm_nautobot}")
+
 
             # Update Constants if Napalm driver is defined for Nautobot Platform
             netmiko_to_napalm = {**NETMIKO_TO_NAPALM_STATIC, **platform_to_napalm_nautobot}
